@@ -1,5 +1,7 @@
-import java.lang.reflect.Array;
-import java.util.ArrayList;
+package generic;
+
+
+import code.mission.Operator;
 
 public class Node {
 
@@ -7,62 +9,59 @@ String state;
 Node parent;
 Operator operator;
 Integer depth;
-Integer pathCost;
-
+public Integer pathCost;
+Integer totalCost;
 @Override
 public String toString() {
 //	return "Node [state=" + state + ", parent=" + parent + ", operator=" + operator + ", depth=" + depth + ", pathCost="
 //			+ pathCost + "]";
-	return "Node [state=" + state + ", operator=" + operator + ", depth=" + depth + ", pathCost="
-	+ pathCost + ", Path=" + this.getPath()+"]";
+	return "Node [state=" + state + ", operator=" + operator + ", depth=" + getDepth() + ", pathCost="
+	+ this.getPathCost() + ", Path=" + this.getPath()+"]";
 }
 public Node(String state, Node parent, Operator operator, Integer depth, Integer pathCost) {
 	super();
 	this.state = state;
 	this.parent = parent;
 	this.operator = operator;
-	this.depth = depth;
+	if(this.getParent()!=null)
+	this.pathCost=this.getParent().getPathCost();
+//	this.depth = (int) this.getPath().chars().filter(ch -> ch == ',').count()-1;
+this.depth=0;
 	this.pathCost = pathCost;
 }
-
 public String getState() {
 	return state;
 }
+
 public void setState(String state) {
 	this.state = state;
 }
 public Node getParent() {
 	return parent;
 }
-public void setParent(Node parent) {
-	this.parent = parent;
-}
 public Operator getOperator() {
 	return operator;
 }
-public void setOperator(Operator operator) {
-	this.operator = operator;
-}
 public Integer getDepth() {
-	return depth;
+	return (int) this.getPath().chars().filter(ch -> ch == ',').count()-1;
+
 }
-public void setDepth(Integer depth) {
-	this.depth = depth;
-}
+
 public Integer getPathCost() {
-	if (pathCost==null)
-		return 0;
-	if (parent==null)
-		return 0;
-	return parent.getPathCost()+pathCost;
+	return this.pathCost;
 }
 public void setPathCost(Integer pathCost) {
-	this.pathCost = pathCost;
+this.totalCost = pathCost+this.getParent().getPathCost();
+this.pathCost = pathCost;
+
+}
+
+public int totalCost() {
+	return totalCost;
 }
 public String getPath() {
 	if (operator==null)
 		return "";
-	
 	return parent.getPath() +operator+",";
 }
 

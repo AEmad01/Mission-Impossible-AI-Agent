@@ -1,3 +1,4 @@
+package code.mission;
 
 public enum Operator {
 RIGHT,

@@ -1,43 +1,18 @@
+package code.mission;
 
-public class Ally {
+public class Ally implements Cloneable{
 	
 	int damage;
 	int X;
 	int Y;
     boolean isCarry;
     boolean isDropped;
-    public void move(Operator direction) {
-
-    	switch(direction) {
-    	case LEFT:
-    		Y--;
-    		break;
-    	case UP:
-    		X--;
-    		break;
-    	case RIGHT:
-    		Y++;
-    		break;
-    	case DOWN:
-    		X++;
-    		break;
-    		
-    	}
-    }
 	public Ally(int damage,int X, int Y) {
 		this.damage=damage;
 		 this.X =X;
 		 this.Y =Y;
 	     isCarry=false;
 	     isDropped=false;
-	}
-	public Ally(Ally ally) {
-		this.damage=ally.getDamage();
-		this.X=ally.getX();
-		this.Y=ally.getY();
-		this.isCarry=ally.isCarried();
-		this.isDropped=ally.isDropped();
-
 	}
 	
 	public boolean isDropped() {
@@ -52,11 +27,17 @@ public class Ally {
 		
 		return damage;
 	}
-	public void damage(Integer depth) {
-		this.damage = damage+(2*depth);
-		if (damage>100)
-			damage=100;
+	public void damage() {
+		this.damage=this.damage+2;
+
+		if (this.damage==100)
+			return;
+		if (this.damage>=100)
+		{	this.damage=100;
+		return;}
+		
 	}
+
 	public boolean isCarried() {
 		return isCarry;
 	}
@@ -74,8 +55,9 @@ public class Ally {
 				+ "]";
 	}
 
-	public void setX(int x) {
+	public void setPos(int x, int y) {
 		X = x;
+		Y=y;
 	}
 	public void setY(int y) {
 		Y = y;
