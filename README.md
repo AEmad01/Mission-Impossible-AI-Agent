@@ -14,10 +14,17 @@ submarine. Ethan can move all in all directions across the grid, can carry IMF m
 and can only drop them at the submarine. Using search algorithms we are going to device
 a solution to help Ethan save the IMF members. This solution will be constructed using a
 variety of search algorithms which are:
+
 • Breadth-first search.
+
 • Depth-first search.
+
 • Iterative deepening search
+
 • Uniform-cost search
+
 • Greedy search with two heuristics
+
 • A Star search with two admissible heuristics
+
 Implementation Language: Java
