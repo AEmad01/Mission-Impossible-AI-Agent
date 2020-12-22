@@ -12,8 +12,9 @@ has a fixed capacity. The island they crashed is a grid that consists of m x n c
 m,n are between 5 and 15. Each cell either contains Ethan (with the truck), an ally or the
 submarine. Ethan can move all in all directions across the grid, can carry IMF members
 and can only drop them at the submarine. Using search algorithms we are going to device
-a solution to help Ethan save the IMF members. This solution will be constructed using a
-variety of search algorithms which are:
+a solution to help Ethan save the IMF members. 
+
+This solution will be constructed using a variety of search algorithms which are:
 
 • Breadth-first search.
 
